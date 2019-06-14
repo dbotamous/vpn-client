@@ -12,14 +12,14 @@ services:
       - PGID=1212 # default group id, for  files access rights
     volumes:
       - /dev/net/tun:/dev/net/tun # tun device
-      - ${HOME}/docker/.vpntesting:/vpn # mounting nfs volume
+      - ${HOME}/docker/.vpn:/vpn # mounting vpn files
     dns: # setting PIA DNS to fix dns leak issues
       - 209.222.18.222
       - 209.222.18.218
-#    ports:
+#    ports: #add your ports here for any services you want to access on local/internal subnet. Examples below.
 #      - 8989:8989 # sonarr port
 #      - 7878:7878 # radarr port
 #      - 8080:8080 # qbit port
 #      - 6881:6881 # qbit torrent port
 #      - 9117:9117 # jackett port
-    command: '-r 192.168.0.0/16' # route local network traffic
+    command: '-r 192.168.0.0/16' # route local network traffic #set the route for your local/internal subnet
